@@ -5,6 +5,8 @@ let correct = reactive({answeredCorrectly: false, tries: 0})
 
 let showButtonLink = reactive({showLink: false});
 
+let showWrong = reactive({showText: false});
+
 const startingQuestion = computed( () => {
   return Math.floor(Math.random() * quiz.length);
 })
@@ -46,13 +48,16 @@ function answerQuestion(number) {
 
     setTimeout(() => {
       showButtonLink.showLink = true
-    }, 2000)
+    }, 1500)
 
     return correct.answeredCorrectly;
   }
   else {
-    correct.answeredCorrectly = false;
-    return correct.answeredCorrectly;
+    showWrong.showText = true;
+
+    setTimeout(() => {
+      showWrong.showText = false
+    }, 1500)
   }
 }
 
@@ -62,7 +67,7 @@ function answerQuestion(number) {
   <div class="flex flex-col gap-4 text-center">
     <div class="font-bold text-3xl">{{ quiz[startingQuestion].question }}</div>
     <input
-        class="border border-gray-300 rounded-md p-2"
+        class="border border-gray-300 rounded-md p-2 max-w-lg self-center"
         @keyup.enter="answerQuestion(startingQuestion)"
         v-model="message" placeholder="edit me"
     />
@@ -72,14 +77,21 @@ function answerQuestion(number) {
     >
       Answer
     </button>
-    <div v-if="!correct.answeredCorrectly && correct.tries >= 1">Wrong! Try again.</div>
+
+    <div v-if="!correct.answeredCorrectly && correct.tries >= 1 && showWrong.showText">Wrong! Try again.</div>
+
     <div class="flex flex-col gap-4" v-if="correct.answeredCorrectly">
       <span>Correct!</span>
-      <div v-show="showButtonLink.showLink">
+      <div
+          class="flex flex-col justify-center"
+          v-show="showButtonLink.showLink">
         <a href="https://maps.google.com" target="_blank"
-           class="bg-blue-100 border border-blue-300 rounded-md py-2 px-8 w-fit self-center mt-8">
-          Klik hier om naar de volgende locatie te gaan
+           class="bg-blue-100 border border-blue-300 rounded-md py-2 px-8 self-center mt-8 flex flex-row min-w-lg text-sm group w-fit">
+          <span class="mr-2">Zoek de schat</span>
+          <span class="group-hover:translate-x-2 transition-transform duration-150">&rarr;</span>
         </a>
+
+        <img class="m-auto w-64 h-auto mt-12" src="@/assets/fake_png.png" />
       </div>
     </div>
   </div>

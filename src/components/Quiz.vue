@@ -11,12 +11,12 @@ const startingQuestion = computed( () => {
   return Math.floor(Math.random() * quiz.length);
 })
 
-const quiz = reactive([
+const quiz = [
 {
     question: 'How much 2 + 2?',
     answer: '4'
   },
-    {
+  {
     question: 'What is the capital of Belgium?',
     answer: 'Brussels'
   },
@@ -36,7 +36,7 @@ const quiz = reactive([
     question: 'Mijn leeftijd is ...',
     answer: '34'
   }
-])
+]
 
 const message = ref('')
 
@@ -69,10 +69,10 @@ function answerQuestion(number) {
     <input
         class="border border-gray-300 rounded-md p-2 max-w-lg self-center"
         @keyup.enter="answerQuestion(startingQuestion)"
-        v-model="message" placeholder="edit me"
+        v-model="message" placeholder="Ik doe een gok"
     />
     <button
-        class="bg-green-100 border border-green-300 rounded-md py-2 px-8 w-fit self-center"
+        class="bg-fuchsia-400 rounded-md py-2 px-8 w-fit self-center text-white font-bold"
         @click="answerQuestion(startingQuestion)"
     >
       Answer

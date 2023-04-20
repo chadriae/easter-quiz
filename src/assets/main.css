@@ -12,5 +12,5 @@ body {
 }
 
 #app {
-    @apply bg-white p-4 shadow-lg opacity-95;
+    @apply bg-white p-4 shadow-lg opacity-90;
 }

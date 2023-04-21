@@ -22,10 +22,6 @@ const questions = ref([
     question: "Ken je collega's... Met hoeveel werken we bij SJ volgens onze website?",
     answer: "26",
   },
-  {
-    question: "We gebruiken het elke dag?",
-    answer: "26",
-  },
 ])
 const currentQuestionIndex = ref(0)
 const selectedAnswerIndex = ref(null)

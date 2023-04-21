@@ -5,9 +5,7 @@ import Quiz from './components/Quiz.vue'
 
 <template>
   <header>
-    <div class="wrapper">
-      <HelloWorld />
-    </div>
+    <HelloWorld />
   </header>
 
   <Quiz />

@@ -7,22 +7,31 @@ const answer = ref("")
 
 const questions = ref([
   {
-    question: "What is the capital of France?",
-    answer: "Paris",
+    question: "Om te beginnen een opwarmertje: op welke dag valt Pasen?",
+    answer: "Zondag",
   },
   {
-    question: "What is the largest country in the world?",
-    answer: "Russia",
+    question: "Een raadsel: wat moet je stukslaan voor je het kan gebruiken? Tip: je kan het ook eten.",
+    answer: "Ei",
   },
   {
-    question: "What is the currency of Japan?",
-    answer: "Yen",
-  }
+    question: "Over eitjes gesproken: wat maakt men met opgeklopt eiwit en suiker?",
+    answer: "Meringue",
+  },
+  {
+    question: "Ken je collega's... Met hoeveel werken we bij SJ volgens onze website?",
+    answer: "26",
+  },
+  {
+    question: "We gebruiken het elke dag?",
+    answer: "26",
+  },
 ])
 const currentQuestionIndex = ref(0)
 const selectedAnswerIndex = ref(null)
 const showFeedback = ref(false)
 const feedback = ref("")
+const correctAnswer = ref(true)
 const showNextQuestion = ref(false)
 const showLink = ref(false)
 
@@ -36,6 +45,7 @@ function selectAnswer() {
   showFeedback.value = true
   if (answer.value === currentQuestion.value.answer) {
     feedback.value = "CORRECT!"
+    correctAnswer.value = true
 
     if (currentQuestionIndex.value === questions.value.length - 1) {
       showNextQuestion.value = false
@@ -46,7 +56,8 @@ function selectAnswer() {
     }
   } else {
     showFeedback.value = true
-    feedback.value = "Wrong answer."
+    correctAnswer.value = false
+    feedback.value = "VERKEERD. Probeer opnieuw..."
 
     setTimeout(() => {
       feedback.value = ""
@@ -82,11 +93,13 @@ function nextQuestion() {
       >
         Answer
       </button>
-      <p v-if="showFeedback">{{ feedback }}</p>
-      <button v-if="showNextQuestion" @click="nextQuestion" class="flex space-x-2 items-center m-auto text-green-400 border-b-2 border-dotted border-green-300">
-        <span>Next Question</span>
-        <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="h-4" fill="#86efac"><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg></span>
-      </button>
+      <div class="flex space-x-4 m-auto">
+        <p v-if="showFeedback" class="font-bold text-xl" :class="correctAnswer ? 'text-green-500':'text-red-400'">{{ feedback }}</p>
+        <button v-if="showNextQuestion" @click="nextQuestion" class="flex space-x-2 items-center m-auto text-blue-300 border-b-2 border-dotted border-blue-300">
+          <span>Volgende vraag</span>
+          <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="h-4" fill="#9FC5F8"><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg></span>
+        </button>
+      </div>
     </div>
     <div v-if="showLink">
       <div class="flex flex-col justify-center">

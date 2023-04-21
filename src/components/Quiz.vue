@@ -99,7 +99,7 @@ function nextQuestion() {
     </div>
     <div v-if="showLink">
       <div class="flex flex-col justify-center">
-        <a href="https://maps.google.com" target="_blank"
+        <a href="https://www.google.com/maps/place/De+Gentenaar+Imam+Press-+%26+Gift-Shop/@51.0561159,3.7950043,17z/data=!3m1!4b1!4m6!3m5!1s0x47c3765d93527bf7:0xe4b107f3dae528b2!8m2!3d51.0561159!4d3.7975792!16s%2Fg%2F11ghfbtmx9" target="_blank"
            class="bg-blue-100 border border-blue-300 rounded-md py-2 px-8 self-center mt-8 flex flex-row min-w-lg text-sm group w-fit">
           <span class="mr-2">Zoek de schat</span>
           <span class="group-hover:translate-x-2 transition-transform duration-150">&rarr;</span>

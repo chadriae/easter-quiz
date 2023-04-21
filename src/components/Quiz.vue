@@ -11,7 +11,11 @@ const questions = ref([
     answer: "Zondag",
   },
   {
-    question: "Een raadsel: wat moet je stukslaan voor je het kan gebruiken? Tip: je kan het ook eten.",
+    question: "Een raadsel: Ik zit niet in een eeuw maar wel in een jaar, niet in een week maar wel in een maand, niet in een uur maar wel in een dag",
+    answer: "A",
+  },
+  {
+    question: "Nóg een raadsel: wat moet je stukslaan voor je het kan gebruiken? Tip: je kan het ook eten.",
     answer: "Ei",
   },
   {
@@ -21,6 +25,10 @@ const questions = ref([
   {
     question: "Ken je collega's... Met hoeveel werken we bij SJ volgens onze website?",
     answer: "26",
+  },
+  {
+    question: "In welk jaar is SJ (Lodestar) opgericht?",
+    answer: "1993",
   },
 ])
 const currentQuestionIndex = ref(0)
@@ -99,7 +107,7 @@ function nextQuestion() {
     </div>
     <div v-if="showLink">
       <div class="flex flex-col justify-center">
-        <a href="https://www.google.com/maps/place/De+Gentenaar+Imam+Press-+%26+Gift-Shop/@51.0561159,3.7950043,17z/data=!3m1!4b1!4m6!3m5!1s0x47c3765d93527bf7:0xe4b107f3dae528b2!8m2!3d51.0561159!4d3.7975792!16s%2Fg%2F11ghfbtmx9" target="_blank"
+        <a href="https://www.google.com/maps/place/TC+Racso/@51.0545252,3.7997125,17z/data=!3m1!4b1!4m6!3m5!1s0x47c37668065f3773:0x872d44ffbef88963!8m2!3d51.0545252!4d3.8022874!16s%2Fg%2F11cnptg5dq" target="_blank"
            class="bg-blue-100 border border-blue-300 rounded-md py-2 px-8 self-center mt-8 flex flex-row min-w-lg text-sm group w-fit">
           <span class="mr-2">Zoek de schat</span>
           <span class="group-hover:translate-x-2 transition-transform duration-150">&rarr;</span>
